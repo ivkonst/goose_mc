@@ -1,7 +1,5 @@
 ## goose_mc  
-<p align="center">
-  <img width="200" height="200" src="/picture/goose_mc.jpg">
-</p>  
+<img align="left" width="180" height="180" src="/picture/goose_mc.jpg">  
 Trying russian rap generation on different NN structures  
 
 ---
