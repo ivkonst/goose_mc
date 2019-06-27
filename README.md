@@ -1,5 +1,5 @@
 ## goose_mc  
-<img align="left" width="180" height="180" src="/picture/goose_mc.jpg">  
+![goose_mc](/picture/goose_mc.jpg)  
 Trying russian rap generation on different NN structures  
 
 ---
@@ -7,8 +7,3 @@ Texts were crawled from *prohiphop.org*, *rap-text.ru*, *vbatle.ru* and *webrap.
 Text [preprocessing](code/extraction_of_notes.ipynb)  
 
 ---
-Another string  
-Another string  
-Another string  
-Another string  
-Another string  
