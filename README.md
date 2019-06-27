@@ -1,5 +1,7 @@
 ## goose_mc  
-![goose_mc](/picture/goose_mc.jpg)  
+<p align="center">
+  <img width="100" height="100" src="/picture/goose_mc.jpg">
+</p>  
 Trying russian rap generation on different NN structures  
 
 ---
