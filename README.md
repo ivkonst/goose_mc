@@ -1,5 +1,5 @@
 ## goose_mc  
-![goose_mc](/picture/goose_mc.jpg)
+![goose_mc](/picture/goose_mc.jpg)  
 Trying russian rap generation on different NN structures  
 
 ---
