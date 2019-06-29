@@ -3,7 +3,9 @@ import jsonlines
 from multiprocessing import Pool, Semaphore
 import numpy as np
 import re
+import torch
 from torch.utils.data import DataLoader
+from utils import pad_list
 from zipfile import ZipFile
 
 np.random.seed(42)
@@ -116,11 +118,11 @@ class MentionsLoader(DataLoader):
     def batch_size(self):
         return self.batch_reader.batch_size
 
-    def construct_rels(self, batch_paragraph):
+    def construct_rels(self, batch):
         raise NotImplementedError()
 
     def full_construct(self, batch):
-        return self.construct_rels(*batch)
+        return self.construct_rels(batch)
 
     @classmethod
     def to_torch(cls, batch: tuple):
@@ -148,20 +150,17 @@ class MentionsLoader(DataLoader):
         return len(self.batch_reader)
     
     
-class EmbeddingMentionLoader(MentionsLoader):
+class ParagraphLoader(MentionsLoader):
     vectorizer = None
 
     def __init__(self, batch_reader, tokenizer, vectorizer, **kwargs):
         super().__init__(batch_reader, tokenizer, **kwargs)
         self.__class__.vectorizer = vectorizer
 
-    def construct_rels(self, batch_paragraph):
-        batch_a = self.__class__.vectorizer(pad_list(list(map(
+    def construct_rels(self, batch):
+        batch = self.__class__.vectorizer.forward(pad_list(list(map(
             self.tokenizer,
-            sentences_a
-        )), pad=lambda: " ")).numpy()
+            batch
+        )), pad=lambda: '&'))
 
-        return batch_a, batch_b, target
-
-    def target_prep(self, target):
-        return target.astype(np.float32)
+        return batch
